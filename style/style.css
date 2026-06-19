@@ -85,26 +85,26 @@ body {
 }
 
 .infoForClient {
+
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   text-align: center;
   align-items: center;
-  height: 60px;
+  padding: 5px;
+  height: 20px;
+
 }
 
-.searchForMovies {
+.loadingSearch {
   display: none;
-  margin-top: 20px;
   text-align: center;
   font-size: 16px;
 
 }
 
-.ErrorSearchForMovies {
+.errorSearch {
   display: none;
-  margin-top: 20px;
   text-align: center;
   font-size: 16px;
   background-color: #dd6666;
@@ -113,7 +113,35 @@ body {
 }
 
 .listOfFilms {
-  margin: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 10px;
+}
+
+@media (max-width: 1000px) {
+
+  .listOfFilms {
+    place-self: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .listOfFilms {
+    gap: 20px;
+    place-self: center;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 300px) {
+  .listOfFilms {
+
+    place-self: center;
+    grid-template-columns: 1fr;
+  }
 }
 
 .cardOfFilm {
@@ -143,7 +171,7 @@ body {
 }
 
 .posterOfFilm img:hover {
-  transform: scale(1.1) ;
+  transform: scale(1.1);
   transition: 0.25s;
 }
 
