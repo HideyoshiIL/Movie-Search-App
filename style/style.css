@@ -182,3 +182,19 @@ body {
 .ageOfFilm {
   color: #fff;
 }
+
+.choiceFilms {
+  cursor: pointer;
+}
+.choiceFilms:hover {
+  transform: scale(1.1);
+  transition: 0.10s;
+}
+
+.choiceSeries {
+  cursor: pointer;
+}
+.choiceSeries:hover {
+  transform: scale(1.1);
+  transition: 0.10s;
+}
