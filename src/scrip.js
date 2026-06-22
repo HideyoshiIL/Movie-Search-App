@@ -173,7 +173,6 @@ function renderModal(arr) {
                   <div>Рейтинги :</div>
                  <div> Rotten Tomatoes : ${rotTom ? rotTom.Value : "Нет данных"}</div>
                  <div> Metacritic : ${metacr ? metacr.Value : "Нет данных"}</div>
-
                 </div>
               </div>
               <hr>
