@@ -9,6 +9,8 @@ const choiceSeries = document.querySelector('.choiceSeries');
 let choiceType = "all";
 let searchNameOfFilm = '';
 
+
+
 window.addEventListener('load', updateCenter);
 
 mainForm.addEventListener("submit", async (e) => {
@@ -46,7 +48,6 @@ async function searchMovie(nameOfMovie, type) {
 
   const response = await fetch(urlOfAPI);
   const data = await response.json();
-
   if (data.Response === "False") {
     return [];
   }
@@ -71,7 +72,8 @@ function renderOfCards(arr) {
     const div = document.createElement("div");
 
     div.innerHTML = `
-          <div class="cardOfFilm">
+    
+          <div class="cardOfFilm" data-id=${movie.imdbID}>
             <div class="posterOfFilm">
               <img src="${movie.Poster}" alt="Poster">
             </div>
@@ -110,3 +112,84 @@ mainLogo.addEventListener("click", () => {
 
   updateCenter();
 })
+
+const modalClose = document.querySelector(".modalClose");
+const overlay = document.querySelector(".overlay");
+const modal = document.querySelector(".modal");
+
+listOfFilms.addEventListener("click", async (e) => {
+  if (e.target.closest('.cardOfFilm')) {
+    const cardImdbID = e.target.closest('.cardOfFilm')
+
+    const movie = await searchForMovieByID(cardImdbID);
+    console.log(movie)
+    renderModal(movie)
+    showModal()
+
+
+  }
+
+});
+
+function showModal() {
+  overlay.style.display = "flex";
+  modal.style.display = "block";
+
+}
+
+function closeModal() {
+  overlay.style.display = "none"
+  modal.style.display = "none"
+}
+
+overlay.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modalClose")) {
+    closeModal()
+  } else if (e.target === overlay) {
+    closeModal()
+  }
+})
+
+function renderModal(arr) {
+  modal.innerHTML = "";
+  const div = document.createElement("div");
+  const rotTom = arr.Ratings.find(rating => rating.Source === "Rotten Tomatoes");
+  const metacr = arr.Ratings.find(rating => rating.Source === "Metacritic");
+
+
+  div.innerHTML = `
+
+              <div class="modalCard">
+                 <button class="modalClose">X</button>
+              <div class="modalPosterOfFilm">
+                <img src=${arr.Poster} alt="Poster">
+              </div>
+
+              <div class="modalInfo">
+                <div class="modalNameOfFilm">${arr.Title}</div>
+                <div class="modalAgeOfFilm">${arr.Year}</div>
+                <div class="modalGrade">
+                <hr>
+                  <div>Рейтинги :</div>
+                 <div> Rotten Tomatoes : ${rotTom ? rotTom.Value : "Нет данных"}</div>
+                 <div> Metacritic : ${metacr ? metacr.Value : "Нет данных"}</div>
+
+                </div>
+              </div>
+              <hr>
+              <div class="modalStory">${arr.Plot}</div>
+  `
+  modal.append(div);
+}
+
+async function searchForMovieByID(imdbID) {
+  let idSearch = `http://www.omdbapi.com/?i=${imdbID.dataset.id}&apikey=924627ad`
+  const response = await fetch(idSearch);
+  const data = await response.json();
+
+  if (data.Response === "False") {
+    return [];
+  }
+
+  return data
+}

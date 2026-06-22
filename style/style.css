@@ -144,6 +144,7 @@ body {
   }
 }
 
+
 .cardOfFilm {
   display: flex;
   flex-direction: column;
@@ -155,6 +156,7 @@ body {
   border-radius: 5px;
   background-color: #222;
   gap: 10px;
+  cursor: pointer;
 }
 
 .posterOfFilm {
@@ -186,15 +188,117 @@ body {
 .choiceFilms {
   cursor: pointer;
 }
+
 .choiceFilms:hover {
   transform: scale(1.1);
   transition: 0.10s;
+  color: #303030;
 }
 
 .choiceSeries {
   cursor: pointer;
 }
+
 .choiceSeries:hover {
   transform: scale(1.1);
   transition: 0.10s;
+  color: #303030;
+}
+
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #616161cc;
+  justify-content: center;
+}
+
+
+.modal {
+  display: none;
+  justify-content: center;
+  margin: auto;
+}
+
+.modalClose {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.modalCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px rgb(41, 41, 41) solid;
+  width: 500px;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #222;
+  gap: 10px;
+}
+
+
+.modalPosterOfFilm {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.modalPosterOfFilm img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.modalInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #fffcfc;
+  gap: 10px;
+  font-size: 19px;
+}
+
+.modalStory {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0efef;
+  margin: 10px;
+  font-size: 23px;
+  font-weight:300;
+  margin-bottom: 20px;
+}
+
+.modalGrade {
+  margin: auto;
+  width: 300px;
+  border-radius: 5px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalPosterOfFilm:hover {
+  transition: 0.25s;
+  transform: scale(1.1);
+}
+
+hr {
+  width: 250px;
+  border: 1px solid rgb(133, 133, 133);
 }
