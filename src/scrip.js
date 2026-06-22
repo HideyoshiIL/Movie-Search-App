@@ -50,6 +50,7 @@ async function searchMovie(nameOfMovie, type) {
   const data = await response.json();
   if (data.Response === "False") {
     return [];
+
   }
 
   return data.Search
@@ -67,6 +68,16 @@ function showError(display) {
 
 function renderOfCards(arr) {
   listOfFilms.innerHTML = "";
+
+  if (!arr || arr.length === 0) {
+    listOfFilms.innerHTML = `
+      <div class="zeroSearch">
+        <div class="zeroMessage">Ничего не нашлось</div>
+        <img src="img/photo_2026-03-13_23-11-37.jpg" alt="" class="imgZeroMessage">
+
+      </div>
+    `
+  }
 
   arr.forEach((movie) => {
     const div = document.createElement("div");

@@ -276,11 +276,11 @@ body {
 }
 
 .modalStory {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f0efef;
   margin: 10px;
   font-size: 23px;
-  font-weight:300;
+  font-weight: 300;
   margin-bottom: 20px;
 }
 
@@ -301,4 +301,26 @@ body {
 hr {
   width: 250px;
   border: 1px solid rgb(133, 133, 133);
+}
+
+.zeroSearch {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgZeroMessage {
+  width: 50%;
+  height: 50%;
+  
+}
+
+.zeroMessage {
+  font-size: 16px;
+  background-color: #dd6666;
+  border: 1px rgb(199, 78, 78) solid;
+  padding: 10px;
 }
